@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Login</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="mobile">Mobile Number</string>
+    <string name="password">Password (9+ char)</string>
+    <string name="signup">Sign Up</string>
+
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_link_to_register">Not a member? Sign up now.</string>
+    <string name="btn_link_to_login">Already a member? Login now.</string>
+
+    <string name="facebook_app_id">818144601651261</string>
+
+    <!-- Button labels -->
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "88148396221",
+    "project_id": "login-1310"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88148396221:android:23c5f6fa9da10a1f",
+        "android_client_info": {
+          "package_name": "com.arxera.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "88148396221-kteei9kj8482ia7e4nvli854iuutdi28.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arxera.login",
+            "certificate_hash": "2C26949EAF108645C8172ED9F67F304E4C407A3A"
+          }
+        },
+        {
+          "client_id": "88148396221-lq742ooa0opei6k17e58beb5vapknt2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4sOXEI1yJ4bMDTTrwdmZ4r9PvwOCsg28"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
