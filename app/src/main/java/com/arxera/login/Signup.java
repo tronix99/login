@@ -112,11 +112,11 @@ public class Signup extends Activity {
 
         @Override
         protected String doInBackground(String... args) {
-            String name, email, mobile, pass;
+            String name, email, mobile, password;
             name = args[0];
             email = args[1];
             mobile = args[2];
-            pass = args[3];
+            password = args[3];
 
             try {
                 URL url = new URL(add_info_url);
@@ -164,6 +164,6 @@ public class Signup extends Activity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        finish();
     }
 }
