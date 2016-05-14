@@ -23,7 +23,7 @@ public class Login  extends Activity{
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        finish();
     }
 
 }
