@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@null"
-            android:text="@string/btn_link_to_login"
+            android:text="@string/btn_link_to_register"
             android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="#fff"
