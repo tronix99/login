@@ -15,16 +15,16 @@ public class Main extends AppCompatActivity {
 
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
-        String mobile = intent.getStringExtra("mobile");
         String email = intent.getStringExtra("email");
+        String mobile = intent.getStringExtra("mobile");
 
-        TextView nm = (TextView) findViewById(R.id.username);
-        TextView mob = (TextView) findViewById(R.id.mobile);
-        TextView em = (TextView) findViewById(R.id.email);
+        TextView tvname = (TextView) findViewById(R.id.username);
+        TextView tvemail = (TextView) findViewById(R.id.email);
+        TextView tvmobile = (TextView) findViewById(R.id.mobile);
 
-        nm.setText(name);
-        mob.setText(mobile);
-        em.setText(email);
-
+        // Display user details
+        tvname.setText(name);
+        tvemail.setText(email);
+        tvmobile.setText(mobile);
     }
 }
