@@ -41,5 +41,16 @@
             android:textColor="#fff"
             />
 
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button"
+            android:text="@string/btn_logout"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
+            android:onClick="logout"/>
     </LinearLayout>
 </LinearLayout>
