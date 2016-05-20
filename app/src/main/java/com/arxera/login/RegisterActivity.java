@@ -27,6 +27,8 @@ import com.facebook.login.widget.LoginButton;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import com.arxera.login.map.MapsActivity;
+
 public class RegisterActivity extends AppCompatActivity {
     Button B1, B2;
     TextView tv;

@@ -14,5 +14,6 @@
     <string name="btn_link_to_login">Already a member? Login now.</string>
 
     <string name="facebook_app_id">818144601651261</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
