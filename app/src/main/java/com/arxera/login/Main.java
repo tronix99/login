@@ -56,7 +56,7 @@ public class Main extends AppCompatActivity {
                         public void onClick(DialogInterface arg0, int arg1) {
 
                             //Getting out sharedpreferences
-                            SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_NAME,Context.MODE_PRIVATE);
+                            SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_NAME,Context.MODE_MULTI_PROCESS);
                             //Getting editor
                             SharedPreferences.Editor editor = preferences.edit();
 

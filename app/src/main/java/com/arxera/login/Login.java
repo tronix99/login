@@ -67,7 +67,7 @@ public class Login extends AppCompatActivity {
 
 
                                     //Creating a shared preference
-                                    final SharedPreferences sharedPreferences = Login.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+                                    final SharedPreferences sharedPreferences = Login.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_MULTI_PROCESS);
 
                                     //Creating editor to store values to shared preferences
                                     final SharedPreferences.Editor editor = sharedPreferences.edit();
