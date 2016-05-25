@@ -164,6 +164,6 @@ public class Signup extends Activity {
 
     @Override
     public void onBackPressed() {
-        finish();
+        startActivity(new Intent(this,RegisterActivity.class));
     }
 }

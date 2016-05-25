@@ -32,7 +32,7 @@ public class Main extends AppCompatActivity {
         tvmobile = (TextView) findViewById(R.id.mobile);
 
         //Fetching email from shared preferences
-        SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_MULTI_PROCESS);
         String name = sharedPreferences.getString(Config.NAME_SHARED_PREF,"Not Available");
         String mobile = sharedPreferences.getString(Config.MOBILE_SHARED_PREF,"Not Available");
         String email = sharedPreferences.getString(Config.EMAIL_SHARED_PREF,"Not Available");
@@ -56,7 +56,7 @@ public class Main extends AppCompatActivity {
                         public void onClick(DialogInterface arg0, int arg1) {
 
                             //Getting out sharedpreferences
-                            SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_NAME,Context.MODE_MULTI_PROCESS);
+                            SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_NAME,Context.MODE_PRIVATE);
                             //Getting editor
                             SharedPreferences.Editor editor = preferences.edit();
 
