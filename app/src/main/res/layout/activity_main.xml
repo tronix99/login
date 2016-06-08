@@ -54,9 +54,9 @@
             android:onClick="logout"/>
 
         <Button
-            android:id="@+id/map"
+            android:id="@+id/active"
             android:layout_weight="1"
-            android:text="My Location"
+            android:text="Active"
             android:textColor="@color/colorPrimary"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -65,7 +65,34 @@
             android:textStyle="bold"
             android:elevation="5dp"
             android:textAllCaps="false"
-            android:textSize="15dp"
-            android:onClick="map"/>
+            android:textSize="15dp"/>
+
+        <Button
+            android:id="@+id/deactive"
+            android:layout_weight="1"
+            android:text="Deactivate"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button"
+            android:textStyle="bold"
+            android:elevation="5dp"
+            android:textAllCaps="false"
+            android:textSize="15dp"/>
+
+        <Button
+            android:id="@+id/searchmap"
+            android:layout_weight="1"
+            android:text="Search"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button"
+            android:textStyle="bold"
+            android:elevation="5dp"
+            android:textAllCaps="false"
+            android:textSize="15dp"/>
     </LinearLayout>
 </LinearLayout>

@@ -12,8 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.arxera.login.map.MapsActivity;
-
 public class Main extends AppCompatActivity {
     private Button log_out;
 
@@ -86,10 +84,6 @@ public class Main extends AppCompatActivity {
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
 
-    }
-
-    public void map(View view) {
-        startActivity(new Intent(this, MapsActivity.class));
     }
 
     @Override
