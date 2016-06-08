@@ -33,7 +33,6 @@ public class MapsActivity extends FragmentActivity {
     Boolean isSearch;
     private SearchBox search;
     DrawerLayout drawerLayout;
-    private ImageView imgMyLocation;
 
 
     @Override
