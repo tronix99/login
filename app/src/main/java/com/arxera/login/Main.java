@@ -86,6 +86,11 @@ public class Main extends AppCompatActivity {
 
     }
 
+    public void mapactive(View view) {
+        Intent map_active = new Intent(Main.this,MapActive.class);
+        startActivity(map_active);
+    }
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(Intent.ACTION_MAIN);
