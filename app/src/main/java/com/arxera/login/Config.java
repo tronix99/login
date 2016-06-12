@@ -15,6 +15,10 @@ public class Config {
     public static final String MOBILE_SHARED_PREF = "mobile";
     //This would be used to store the email of current logged in user
     public static final String EMAIL_SHARED_PREF = "email";
+    //This would be used to store the email of current logged in user
+    public static final String LATITUDE = "lat";
+    //This would be used to store the email of current logged in user
+    public static final String LONGITUDE = "long";
 
     //We will use this to store the boolean in sharedpreference to track user is loggedin or not
     public static final String LOGGEDIN_SHARED_PREF = "logged";

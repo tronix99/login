@@ -17,4 +17,11 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_map_active">Map</string>
 
+    <string name="GPSAlertDialogTitle">GPS is setting</string>
+    <string name="GPSAlertDialogMessage">GPS is not enabled. Do you want to go to setting menu</string>
+    <string name="action_settings">Settings</string>
+    <string name="cancel">Cancel</string>
+    <string name="latitude">Latitude : </string>
+    <string name="longitude">Longitude : </string>
+
 </resources>
