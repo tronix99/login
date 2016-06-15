@@ -44,7 +44,10 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Main"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".ActiveUsers"
+            android:theme="@style/MyMaterialTheme" />
     </application>
 
 </manifest>

@@ -54,7 +54,7 @@
             android:onClick="logout"/>
 
         <Button
-            android:id="@+id/active"
+            android:id="@+id/userad"
             android:layout_weight="1"
             android:text="Active"
             android:textColor="@color/colorPrimary"
@@ -66,12 +66,12 @@
             android:elevation="5dp"
             android:textAllCaps="false"
             android:textSize="15dp"
-            android:onClick="mapa"/>
+            android:onClick="userad"/>
 
         <Button
-            android:id="@+id/deactive"
+            android:id="@+id/de"
             android:layout_weight="1"
-            android:text="Deactivate"
+            android:text="Deactive"
             android:textColor="@color/colorPrimary"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -80,7 +80,8 @@
             android:textStyle="bold"
             android:elevation="5dp"
             android:textAllCaps="false"
-            android:textSize="15dp"/>
+            android:textSize="15dp"
+            android:onClick="de"/>
 
         <Button
             android:id="@+id/searchmap"
@@ -94,6 +95,7 @@
             android:textStyle="bold"
             android:elevation="5dp"
             android:textAllCaps="false"
-            android:textSize="15dp"/>
+            android:textSize="15dp"
+            android:onClick="nearu"/>
     </LinearLayout>
 </LinearLayout>

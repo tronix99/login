@@ -25,29 +25,25 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class Main extends AppCompatActivity {
-    private Button log_out;
-    // GPSTracker class
     GPSTracker gps;
-    //Textview to show currently logged in user
-    private TextView tvname,tvmobile,tvemail;
+    private TextView tvname, tvmobile, tvemail;
+    String name, mobile, email;
+    private boolean ACTIVE = false;
+    Button act;
+    SharedPreferences get,active,getactive,logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         tvname = (TextView) findViewById(R.id.username);
         tvemail = (TextView) findViewById(R.id.email);
         tvmobile = (TextView) findViewById(R.id.mobile);
-
-        //Fetching email from shared preferences
-        SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_MULTI_PROCESS);
-        String name = sharedPreferences.getString(Config.NAME_SHARED_PREF,"Not Available");
-        String mobile  = sharedPreferences.getString(Config.MOBILE_SHARED_PREF,"Not Available");
-        String email  = sharedPreferences.getString(Config.EMAIL_SHARED_PREF,"Not Available");
-
-
+        get = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_MULTI_PROCESS);
+        name = get.getString(Config.NAME_SHARED_PREF, "Not Available");
+        mobile = get.getString(Config.MOBILE_SHARED_PREF, "Not Available");
+        email = get.getString(Config.EMAIL_SHARED_PREF, "Not Available");
+        act = (Button) findViewById(R.id.userad);
         // Display user details
         tvname.setText(name);
         tvemail.setText(email);
@@ -55,107 +51,76 @@ public class Main extends AppCompatActivity {
 
     }
 
+
     public void logout(View view) {
         //Logout function
-            //Creating an alert dialog to confirm logout
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setMessage("Are you sure you want to logout?");
-            alertDialogBuilder.setPositiveButton("Yes",
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface arg0, int arg1) {
+        //Creating an alert dialog to confirm logout
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Are you sure you want to logout?");
+        alertDialogBuilder.setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        logout = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = logout.edit();
+                        editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, false);
+                        editor.putBoolean(Config.SUCCESS, false);
+                        editor.clear();
+                        editor.commit();
+                        Intent intent = new Intent(Main.this, Login.class);
+                        startActivity(intent);
+                    }
+                });
 
-                            //Getting out sharedpreferences
-                            SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_NAME,Context.MODE_PRIVATE);
-                            //Getting editor
-                            SharedPreferences.Editor editor = preferences.edit();
+        alertDialogBuilder.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
 
-                            //Puting the value false for loggedin
-                            editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, false);
-                            editor.putBoolean(Config.SUCCESS, false);
-
-                            // Clearing all data from Shared Preferences
-                            editor.clear();
-                            editor.commit();
-
-                            //Starting login activity
-                            Intent intent = new Intent(Main.this, Login.class);
-                            startActivity(intent);
-                        }
-                    });
-
-            alertDialogBuilder.setNegativeButton("No",
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface arg0, int arg1) {
-
-                        }
-                    });
-
-            //Showing the alert dialog
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
 
     }
 
-    public void mapa(View view) {
-        // create class object
+    public void userad(View view) {
         gps = new GPSTracker(Main.this);
 
-        // check if GPS enabled
-        if(gps.canGetLocation()){
-
+        if (gps.canGetLocation()) {
             double latitude = gps.getLatitude();
             double longitude = gps.getLongitude();
-            String lat =  String.valueOf(latitude);
-            String longi =  String.valueOf(longitude);
-
-            // \n is for new line
-            Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
-            //Creating a shared preference
-            final SharedPreferences sharedPreferences = Main.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_MULTI_PROCESS);
-
-            //Creating editor to store values to shared preferences
-            final SharedPreferences.Editor editor = sharedPreferences.edit();
-
-            //getting username
-            String name = sharedPreferences.getString(Config.NAME_SHARED_PREF,"Not Available");
-
-            //Adding values to editor
+            String lat = String.valueOf(latitude);
+            String longi = String.valueOf(longitude);
+            final SharedPreferences active = Main.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_MULTI_PROCESS);
+            final SharedPreferences.Editor editor = active.edit();
+            editor.putBoolean(Config.ACTIVE, true);
             editor.putString(Config.LATITUDE, lat);
             editor.putString(Config.LONGITUDE, longi);
-
-            //Saving values to editor
             editor.commit();
-
-            BackgroundTask bt = new BackgroundTask();
-            bt.execute(lat,longi,name);
-        }else{
-            // can't get location
-            // GPS or Network is not enabled
-            // Ask user to enable GPS/network in settings
+            Toast.makeText(getApplicationContext(), lat + longi, Toast.LENGTH_SHORT).show();
+            ActiveBackgroundTask bt = new ActiveBackgroundTask();
+            bt.execute(lat, longi, name);
+        } else {
             gps.showSettingsAlert();
         }
     }
 
-    //adding lat n long values to server
-    class BackgroundTask extends AsyncTask<String, Void, String> {
-        String add_info_url;
+    class ActiveBackgroundTask extends AsyncTask<String, Void, String> {
+        String latlong_info_url;
 
         @Override
         protected void onPreExecute() {
-            add_info_url = "http://arx-era.com/latlong.php";
+            latlong_info_url = "http://arx-era.com/activelatlong.php";
         }
 
         @Override
         protected String doInBackground(String... args) {
-            String name, lat, longi;
+            String lat, longi;
             lat = args[0];
             longi = args[1];
-            name = args[2];
-
             try {
-                URL url = new URL(add_info_url);
+                URL url = new URL(latlong_info_url);
                 HttpURLConnection huc = (HttpURLConnection) url.openConnection();
                 huc.setRequestMethod("POST");
                 huc.setDoOutput(true);
@@ -172,7 +137,6 @@ public class Main extends AppCompatActivity {
                 is.close();
                 huc.disconnect();
                 return "Active";
-
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -191,6 +155,69 @@ public class Main extends AppCompatActivity {
         protected void onPostExecute(String result) {
             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void de(View view) {
+        final SharedPreferences deactive = Main.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_MULTI_PROCESS);
+        final SharedPreferences.Editor editor = deactive.edit();
+        editor.putBoolean(Config.ACTIVE, false);
+        editor.commit();
+        DeactiveBackgroundTask bt = new DeactiveBackgroundTask();
+        bt.execute(name);
+    }
+
+    //Deactive user
+    class DeactiveBackgroundTask extends AsyncTask<String, Void, String> {
+        String deactive_info_url;
+
+        @Override
+        protected void onPreExecute() {
+            deactive_info_url = "http://arx-era.com/deactivelatlong.php";
+        }
+
+        @Override
+        protected String doInBackground(String... args) {
+            String name;
+            name = args[0];
+            try {
+                URL url = new URL(deactive_info_url);
+                HttpURLConnection huc = (HttpURLConnection) url.openConnection();
+                huc.setRequestMethod("POST");
+                huc.setDoOutput(true);
+                OutputStream os = huc.getOutputStream();
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+                String data_string = URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8");
+                bw.write(data_string);
+                bw.flush();
+                bw.close();
+                os.close();
+                InputStream is = huc.getInputStream();
+                is.close();
+                huc.disconnect();
+                return "Deactive";
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void nearu(View view) {
+        Intent near = new Intent(Main.this,ActiveUsers.class);
+        startActivity(near);
     }
 
     @Override
