@@ -122,7 +122,6 @@ public class Login extends AppCompatActivity {
                     String email = json.getString(TAG_EMAIL);
                     String mobile = json.getString(TAG_MOBILE);
 
-
                     //Creating a shared preference
                     final SharedPreferences sharedPreferences = Login.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_MULTI_PROCESS);
 

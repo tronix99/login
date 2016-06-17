@@ -32,4 +32,13 @@
         android:id="@+id/longi"
         android:textStyle="bold"/>
 
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:text="Distance"
+        android:gravity="center"
+        android:id="@+id/distance"
+        android:textStyle="bold"/>
+
 </LinearLayout>

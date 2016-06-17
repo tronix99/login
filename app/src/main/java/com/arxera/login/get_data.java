@@ -5,10 +5,21 @@ package com.arxera.login;
  */
 public class get_data {
     private String name;
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
+    private String distance;
     private Double lat, longi;
 
-    public get_data(String name, double lat, double longi) {
+    public get_data(String name,String distance, double lat, double longi) {
         this.setName(name);
+        this.setDistance(distance);
         this.setLat(lat);
         this.setLongi(longi);
     }

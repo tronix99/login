@@ -95,8 +95,8 @@ public class Main extends AppCompatActivity {
             final SharedPreferences active = Main.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_MULTI_PROCESS);
             final SharedPreferences.Editor editor = active.edit();
             editor.putBoolean(Config.ACTIVE, true);
-            editor.putString(Config.LATITUDE, lat);
-            editor.putString(Config.LONGITUDE, longi);
+            editor.putString(Config.LATITUDE, (Double.toString(latitude)));
+            editor.putString(Config.LONGITUDE, (Double.toString(longitude)));
             editor.commit();
             Toast.makeText(getApplicationContext(), lat + longi, Toast.LENGTH_SHORT).show();
             ActiveBackgroundTask bt = new ActiveBackgroundTask();

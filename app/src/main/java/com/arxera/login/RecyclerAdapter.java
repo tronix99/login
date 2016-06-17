@@ -41,6 +41,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         if (holder.viewType==TYPE_LIST){
             get_data get_data = array_list.get(position-1);
             holder.name.setText(get_data.getName());
+            holder.distance.setText(get_data.getDistance());
             holder.lat.setText(String.valueOf(get_data.getLat()));
             holder.longi.setText(String.valueOf(get_data.getLongi()));
         }
@@ -52,12 +53,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     }
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder{
-        TextView name,lat,longi;
+        TextView name,distance,lat,longi;
         int viewType;
         public RecyclerViewHolder(View view,int viewType){
             super(view);
             if (viewType==TYPE_LIST) {
                 name = (TextView) view.findViewById(R.id.name);
+                distance = (TextView) view.findViewById(R.id.distance);
                 lat = (TextView) view.findViewById(R.id.lat);
                 longi = (TextView) view.findViewById(R.id.longi);
                 this.viewType = TYPE_LIST;

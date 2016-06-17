@@ -35,4 +35,14 @@
         android:id="@+id/h_longi"
         android:textStyle="bold"/>
 
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:text="Distance"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:id="@+id/h_distance"
+        android:textStyle="bold"/>
+
 </LinearLayout>

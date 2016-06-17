@@ -13,7 +13,5 @@ public class Config {
     public static final String LONGITUDE = "long";
     public static final String ACTIVE = "active";
     public static final String LOGGEDIN_SHARED_PREF = "logged";
-    public static final String DATA_SQL_LAT = "datalat";
-    public static final String DATA_SQL_LONGI = "datalongi";
     public static final String SUCCESS = "success";
 }
